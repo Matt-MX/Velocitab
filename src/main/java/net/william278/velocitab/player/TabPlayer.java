@@ -25,6 +25,7 @@ import net.william278.velocitab.Velocitab;
 import net.william278.velocitab.config.Placeholder;
 import net.william278.velocitab.tab.PlayerTabList;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -34,13 +35,15 @@ import java.util.stream.Collectors;
 
 public final class TabPlayer implements Comparable<TabPlayer> {
     private final Player player;
+    private final String nickname;
     private final Role role;
     private final int highestWeight;
     private int headerIndex = 0;
     private int footerIndex = 0;
 
-    public TabPlayer(@NotNull Player player, @NotNull Role role, int highestWeight) {
+    public TabPlayer(@NotNull Player player, @Nullable String nickname, @NotNull Role role, int highestWeight) {
         this.player = player;
+        this.nickname = nickname;
         this.role = role;
         this.highestWeight = highestWeight;
     }
@@ -53,6 +56,11 @@ public final class TabPlayer implements Comparable<TabPlayer> {
     @NotNull
     public Role getRole() {
         return role;
+    }
+
+    @NotNull
+    public String getNicknameOrUsername() {
+        return this.nickname == null ? player.getUsername() : this.nickname;
     }
 
     /**

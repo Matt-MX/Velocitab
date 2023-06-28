@@ -42,6 +42,7 @@ public enum Placeholder {
     CURRENT_DATE((plugin, player) -> DateTimeFormatter.ofPattern("dd MMM yyyy").format(LocalDateTime.now())),
     CURRENT_TIME((plugin, player) -> DateTimeFormatter.ofPattern("HH:mm:ss").format(LocalDateTime.now())),
     USERNAME((plugin, player) -> plugin.getFormatter().escape(player.getPlayer().getUsername())),
+    NICKNAME((plugin, player) -> plugin.getFormatter().escape(player.getNicknameOrUsername())),
     SERVER((plugin, player) -> player.getServerDisplayName(plugin)),
     PING((plugin, player) -> Long.toString(player.getPlayer().getPing())),
     PREFIX((plugin, player) -> player.getRole().getPrefix().orElse("")),

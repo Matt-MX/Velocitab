@@ -76,6 +76,7 @@ public class LuckPermsHook extends Hook {
                         .buildTask(plugin, () -> {
                             final TabPlayer updatedPlayer = new TabPlayer(
                                     player,
+                                    event.getData().getMetaData().getMetaValue("iris.nickname"),
                                     getRoleFromMetadata(event.getData().getMetaData()),
                                     getHighestWeight()
                             );
